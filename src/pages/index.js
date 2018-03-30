@@ -1,4 +1,7 @@
 import React from "react";
+import withRedux from "next-redux-wrapper";
+import {makeStore} from "../lib/makeStore";
+
 class IndexPage extends React.Component {
     render() {
         return (
@@ -9,4 +12,4 @@ class IndexPage extends React.Component {
     }
 }
 
-export default IndexPage;
+export default withRedux(makeStore)(IndexPage);
