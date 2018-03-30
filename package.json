@@ -1,0 +1,21 @@
+{
+  "name": "next-boilerplate",
+  "version": "0.0.1",
+  "description": "Next.js boilerplate",
+  "main": "index.js",
+  "repository": "git@github.com:GDR/next-boilerplate.git",
+  "author": "Damir Garifullin gosugdr@gmail.com",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next src",
+    "build": "next build src"
+  },
+  "dependencies": {
+    "next": "^5.1.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  },
+  "devDependencies": {
+    "babel-plugin-inline-react-svg": "^0.5.2"
+  }
+}
