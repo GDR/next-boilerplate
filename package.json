@@ -7,29 +7,44 @@
   "author": "Damir Garifullin gosugdr@gmail.com",
   "license": "MIT",
   "scripts": {
-    "dev": "next src || yarn run test",
-    "test": "jest",
-    "build": "next build src"
+    "dev": "next src",
+    "test": "jest --watch",
+    "lint": "eslint",
+    "dev:start": "concurrently --names \"NEXT,TESTS\" \"yarn dev:start\" \"yarn test\" \"yarn run eslint\"",
+    "prod": "yarn prod:build && yarn prod:start",
+    "prod:build": "cross-env NODE_ENV=production next build src",
+    "prod:start": "cross-env NODE_ENV=production next start"
   },
   "dependencies": {
-    "babel-plugin-transform-decorators": "^6.24.1",
     "next": "^5.1.0",
     "next-redux-wrapper": "^1.3.5",
-    "prop-types": "^15.6.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-jss": "^8.3.5",
     "react-redux": "^5.0.7",
-    "react-test-renderer": "^16.3.0",
     "redux": "^3.7.2",
-    "redux-devtools": "^3.4.1",
-    "redux-devtools-extension": "^2.13.2",
-    "redux-form": "^7.3.0",
-    "webpack": "^4.4.1"
+    "redux-form": "^7.3.0"
   },
   "devDependencies": {
     "babel-plugin-inline-react-svg": "^0.5.2",
+    "babel-plugin-transform-decorators": "^6.24.1",
+    "redux-devtools": "^3.4.1",
+    "redux-devtools-extension": "^2.13.2",
+    "react-test-renderer": "^16.3.0",
+    "concurrently": "^3.5.1",
     "cross-env": "^5.1.4",
-    "jest": "^22.4.3"
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.10.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-react": "^7.7.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "eslint-watch": "^3.1.4",
+    "jest": "^22.4.3",
+    "prop-types": "^15.6.1",
+    "webpack": "^3.0.0"
   }
 }
