@@ -9,16 +9,20 @@
   "scripts": {
     "open": "next src",
     "test": "jest",
-    "test:watch": "test --watch",
+    "test:watch": "yarn test --watch",
     "lint": "esw src",
-    "lint:watch": "lint --watch",
+    "lint:watch": "yarn lint --watch",
     "prettier": "prettier --config ./.prettierrc.js --write ./src/**/*.{js,jsx}",
-    "start": "concurrently -k -r -s first --names \"\" \"yarn open\" \"yarn test:watch\" \"yarn run lint:watch\"",
-    "prod": "yarn prod:build && yarn prod:start",
-    "prod:build": "cross-env NODE_ENV=production next build src",
-    "prod:start": "cross-env NODE_ENV=production next start"
+    "dev": "concurrently -k -r -s first --names \"\" \"yarn open\" \"yarn test:watch\" \"yarn run lint:watch\"",
+    "prebuild": "rimraf build",
+    "build:src": "cross-env NODE_ENV=production next build src",
+    "build:copy": "babel-node ./tools/copy-files.js",
+    "build": "run-s prebuild build:src build:copy",
+    "start": "cross-env NODE_ENV=production next start src"
   },
   "dependencies": {
+    "cross-env": "^5.1.4",
+    "express": "^4.16.3",
     "lodash": "^4.17.5",
     "next": "^5.1.0",
     "next-redux-wrapper": "^1.3.5",
@@ -27,16 +31,21 @@
     "react-jss": "^8.3.5",
     "react-redux": "^5.0.7",
     "redux": "^3.7.2",
-    "redux-form": "^7.3.0",
     "redux-devtools": "^3.4.1",
-    "redux-devtools-extension": "^2.13.2"
+    "redux-devtools-extension": "^2.13.2",
+    "redux-form": "^7.3.0"
   },
   "devDependencies": {
+    "@zeit/next-sass": "^0.1.2",
+    "babel-cli": "^6.26.0",
     "babel-eslint": "^8.2.2",
     "babel-plugin-inline-react-svg": "^0.5.2",
     "babel-plugin-transform-decorators": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-watch": "^2.0.7",
     "concurrently": "^3.5.1",
-    "cross-env": "^5.1.4",
+    "copy-pkg-json-webpack-plugin": "^0.0.38",
+    "copy-webpack-plugin": "^4.5.1",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-prettier": "^2.9.0",
@@ -50,10 +59,20 @@
     "eslint-plugin-react": "^7.7.0",
     "eslint-plugin-standard": "^3.0.1",
     "eslint-watch": "^3.1.4",
+    "fs-extra": "^5.0.0",
+    "glob": "^7.1.2",
+    "gulp": "^3.9.1",
     "jest": "^22.4.3",
+    "node-sass": "^4.8.3",
+    "npm-run-all": "^4.1.2",
+    "path": "^0.12.7",
     "prettier": "^1.11.1",
     "prop-types": "^15.6.1",
     "react-test-renderer": "^16.3.0",
+    "rimraf": "^2.6.2",
     "webpack": "^3.0.0"
+  },
+  "jest": {
+    "roots": ["<rootDir>/src", "<rootDir>/server"]
   }
 }

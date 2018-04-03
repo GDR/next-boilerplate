@@ -7,7 +7,16 @@ import withTheme from '../hocs/withTheme';
 @withRedux(configureStore)
 class IndexPage extends React.Component {
   render() {
-    return <div>Hello, world!</div>;
+    return (
+      <div className="test">
+        Hello, world!
+        <style jsx>{`
+          .test {
+            background: green;
+          }
+        `}</style>
+      </div>
+    );
   }
 }
 
