@@ -6,15 +6,20 @@ export default class AppDocument extends Document {
   static getInitialProps({ renderPage }) {
     const sheets = new SheetsRegistry();
 
-    const decoratePage = Page => props =>
-      (<JssProvider registry={sheets}>
+    const decoratePage = Page => props => (
+      <JssProvider registry={sheets}>
         <Page {...props} />
-       </JssProvider>);
+      </JssProvider>
+    );
 
     const renderedPage = renderPage(decoratePage);
 
     const styles = (
-      <style type="text/css" data-meta="jss-ssr" dangerouslySetInnerHTML={{ __html: sheets.toString() }} />
+      <style
+        type="text/css"
+        data-meta="jss-ssr"
+        dangerouslySetInnerHTML={{ __html: sheets.toString() }}
+      />
     );
 
     return { ...renderedPage, styles };

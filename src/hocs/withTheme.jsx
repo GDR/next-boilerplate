@@ -4,7 +4,7 @@ import { ThemeProvider } from 'react-jss';
 const withTheme = Component => {
   return () => (
     <ThemeProvider theme={null}>
-      <Component/>
+      <Component />
     </ThemeProvider>
   );
 };
