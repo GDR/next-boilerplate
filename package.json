@@ -9,9 +9,10 @@
   "scripts": {
     "open": "next src",
     "test": "jest",
-    "test:watch": "yarn test --watch",
+    "test:watch": "test --watch",
     "lint": "esw src",
-    "lint:watch": "yarn lint --watch",
+    "lint:watch": "lint --watch",
+    "prettier": "prettier --config ./.prettierrc.js --write ./src/**/*.{js,jsx}",
     "start": "concurrently -k -r -s first --names \"\" \"yarn open\" \"yarn test:watch\" \"yarn run lint:watch\"",
     "prod": "yarn prod:build && yarn prod:start",
     "prod:build": "cross-env NODE_ENV=production next build src",
@@ -26,7 +27,9 @@
     "react-jss": "^8.3.5",
     "react-redux": "^5.0.7",
     "redux": "^3.7.2",
-    "redux-form": "^7.3.0"
+    "redux-form": "^7.3.0",
+    "redux-devtools": "^3.4.1",
+    "redux-devtools-extension": "^2.13.2"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.2",
@@ -51,8 +54,6 @@
     "prettier": "^1.11.1",
     "prop-types": "^15.6.1",
     "react-test-renderer": "^16.3.0",
-    "redux-devtools": "^3.4.1",
-    "redux-devtools-extension": "^2.13.2",
     "webpack": "^3.0.0"
   }
 }
