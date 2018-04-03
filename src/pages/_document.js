@@ -1,5 +1,5 @@
 import React from 'react';
-import Document, { Head, Main, NextScript } from 'next/document';
+import Document from 'next/document';
 import { JssProvider, SheetsRegistry } from 'react-jss';
 
 export default class AppDocument extends Document {

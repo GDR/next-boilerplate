@@ -1,7 +1,7 @@
 import React          from "react";
 import withRedux      from "next-redux-wrapper";
 import configureStore from "../lib/configureStore";
-import {withTheme}    from "../hocs/withTheme";
+import withTheme    from "../hocs/withTheme";
 
 @withTheme
 @withRedux(configureStore)
