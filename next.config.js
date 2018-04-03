@@ -1,3 +1,5 @@
+const withSass = require('@zeit/next-sass');
+
 const distDir = (phase) => {
   switch (phase) {
     case "phase-production-build":
@@ -7,12 +9,9 @@ const distDir = (phase) => {
   }
 };
 
-module.exports = (phase) => {
+module.exports = withSass((phase) => {
   return {
-    webpack: (config) => {
-      return config;
-    },
     distDir: distDir(phase),
     pageExtensions: ["jsx", "js"]
   };
-};
+});
