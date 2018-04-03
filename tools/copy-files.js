@@ -27,10 +27,18 @@ async function copyJsFiles(from, to) {
   return Promise.all(cmds);
 }
 
+async function copyStatic(from, to) {
+  const files = glob.sync('**/*.*', {cwd: from});
+  const cmds = files.map(file => fse.copy(path.resolve(from, file), path.resolve(to, file)));
+  return Promise.all(cmds);
+}
+
 async function run() {
   const fromServer = path.resolve(__dirname, '../server');
   await copyJsFiles(fromServer, buildPath);
-  await createPackageFile();
+  const fromStatic = path.resolve(__dirname, '../src/static');
+  await copyStatic(fromStatic, path.resolve(buildPath, './static'));
+  await createPackageFile(fromServer, buildPath);
 }
 
 run();
