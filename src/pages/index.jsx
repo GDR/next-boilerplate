@@ -11,7 +11,7 @@ class IndexPage extends React.Component {
     return (
       <div>
         Hello, world!
-        <img src="/static/images/warning-icon.svg"/>
+        <div>asd</div>
       </div>
     );
   }

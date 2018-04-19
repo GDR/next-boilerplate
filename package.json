@@ -7,25 +7,24 @@
   "author": "Damir Garifullin gosugdr@gmail.com",
   "license": "MIT",
   "scripts": {
-    "open": "next src",
+    "start": "next src",
     "test": "jest",
     "test:watch": "yarn test --watch",
     "lint": "esw src",
     "lint:watch": "yarn lint --watch",
     "prettier": "prettier --config ./.prettierrc.js --write ./src/**/*.{js,jsx}",
-    "dev": "concurrently -k -r -s first \"yarn open\" \"yarn test:watch\" \"yarn run lint:watch\"",
     "prebuild": "rimraf build",
     "build:src": "cross-env NODE_ENV=production next build src",
-    "build:copy": "babel-node ./tools/copy-files.js",
-    "build": "run-s prebuild build:src build:copy",
-    "start": "cross-env NODE_ENV=production next start src"
+    "serve": "cross-env NODE_ENV=production next start src"
   },
   "dependencies": {
+    "@zeit/next-sass": "^0.1.2",
     "cross-env": "^5.1.4",
     "express": "^4.16.3",
     "lodash": "^4.17.5",
     "next": "^5.1.0",
     "next-redux-wrapper": "^1.3.5",
+    "node-sass": "^4.8.3",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-jss": "^8.3.5",
@@ -34,10 +33,9 @@
     "redux-devtools": "^3.4.1",
     "redux-devtools-extension": "^2.13.2",
     "redux-form": "^7.3.0",
-    "segoe-fonts": "^1.0.1"
+    "webpack": "^3.11.0"
   },
   "devDependencies": {
-    "@zeit/next-sass": "^0.1.2",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.2",
@@ -65,7 +63,6 @@
     "glob": "^7.1.2",
     "gulp": "^3.9.1",
     "jest": "^22.4.3",
-    "node-sass": "^4.8.3",
     "normalize.css": "^8.0.0",
     "npm-run-all": "^4.1.2",
     "path": "^0.12.7",
@@ -73,8 +70,7 @@
     "prop-types": "^15.6.1",
     "react-test-renderer": "^16.3.0",
     "rimraf": "^2.6.2",
-    "url-loader": "^1.0.1",
-    "webpack": "^3.0.0"
+    "url-loader": "^1.0.1"
   },
   "jest": {
     "roots": [

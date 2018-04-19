@@ -1,7 +1,6 @@
-import React from "react";
-import Document from "next/document";
-import { JssProvider, SheetsRegistry } from "react-jss";
-import { Head, Main, NextScript } from "next/document";
+import React from 'react';
+import { JssProvider, SheetsRegistry } from 'react-jss';
+import Document, { Head, Main, NextScript } from 'next/document';
 
 export default class AppDocument extends Document {
   static getInitialProps({ renderPage }) {
@@ -28,14 +27,14 @@ export default class AppDocument extends Document {
 
   render() {
     return (
-      <html>
-      <Head>
-        <link rel="stylesheet" href="/_next/static/style.css"/>
-      </Head>
-      <body>
-      <Main/>
-      <NextScript/>
-      </body>
+      <html lang="en-US">
+        <Head>
+          <link rel="stylesheet" href="/_next/static/style.css" />
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
       </html>
     );
   }
