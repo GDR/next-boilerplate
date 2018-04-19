@@ -179,3 +179,4 @@ $RECYCLE.BIN/
 .gitignore
 .idea/
 build/
+_next/
